@@ -2,15 +2,20 @@ import React, { useState, useCallback } from "react";
 import { Route } from "react-router-dom";
 import { Login, Admin, Info, Counter, Average } from "../pages";
 import TodoTemplate from "../components/TodoTemplate";
-import NewsList from "../components/NewsList";
-import Categories from "../components/Categories";
+// import NewsList from "../components/NewsList";
+// import Categories from "../components/Categories";
+import CounterContainer from "../containers/CounterContainer";
+import TodosContainer from "../containers/TodosContainer";
 
 const App = () => {
-  const [category, setCategory] = useState("all");
-  const onSelect = useCallback(category => setCategory(category), []);
+  // const [category, setCategory] = useState("all");
+  // const onSelect = useCallback(category => setCategory(category), []);
   return (
     <>
       <div>
+        <CounterContainer />
+        <hr />
+        <TodosContainer />
         <Route exact path="/" component={Login} />
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/info" component={Info} />
@@ -18,8 +23,8 @@ const App = () => {
         <Route exact path="/average" component={Average} />
         <Route exact path="/todo" component={TodoTemplate} />
       </div>
-      <Categories category={category} onSelect={onSelect} />
-      <NewsList category={category} />
+      {/* <Categories category={category} onSelect={onSelect} />
+      <NewsList category={category} /> */}
     </>
   );
 };
